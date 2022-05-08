@@ -13,11 +13,11 @@ class ViewController: UIViewController {
     var timer: Timer!
     
     // Các thông số vận tốc, gia tốc, thời gian
-    let a: Double = 10.0
-    var v: Double = 10.0
-    var t: Double = 0.0
+    let a: CGFloat = 10.0
+    var v: CGFloat = 0.0
+    var t: CGFloat = 0.01
     // Độ cao tối đa
-    var h: Double = 0.0
+    var h: CGFloat = 0.0
     // Kiểm tra bóng đi lên hay xuống
     var checkIsDown: Bool = true
     
@@ -36,18 +36,9 @@ class ViewController: UIViewController {
         ballView.backgroundColor = .systemOrange
         ballView.layer.cornerRadius = 50
         
-//        print(CGFloat(sqrt(2*CGFloat(self.a)*self.view.frame.maxY/2)))
-//        print(CGFloat(sqrt(2*CGFloat(self.a)*self.view.frame.maxY/2)/CGFloat(self.a)))
-//
-//        timer = Timer.scheduledTimer(withTimeInterval: CGFloat(sqrt(2*CGFloat(self.a)*self.view.frame.maxY/2)/CGFloat(self.a)), repeats: true, block: { _ in
-//            self.ballView.frame.origin.y += self.view.frame.maxY/2-100
-//            if self.ballView.frame.maxY == self.view.frame.maxY {
-//                self.timer.invalidate()
-//            }
-//        })
         
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
+            self.runTimer()
         })
         
     }
@@ -57,7 +48,7 @@ class ViewController: UIViewController {
             // Nếu rơi xuống => vận tốc tăng dần
             v += a * t
             // Cộng thêm quãng đường đi được là v * t
-            self.ballView.frame.origin.y += v * t * 500
+            self.ballView.frame.origin.y += v * t * 300
             // Kiểm tra nếu bóng đã chạm đấy
             if self.ballView.frame.maxY >= self.view.bounds.maxY {
                 // Đổi hướng thành đi lên
@@ -71,7 +62,7 @@ class ViewController: UIViewController {
             // Nếu bóng đi lên => vận tốc giảm dần
             v -= a * t
             // Thay đổi độ cao của quả bóng theo thời gian t
-            self.ballView.frame.origin.y -= v * t * 500
+            self.ballView.frame.origin.y -= v * t * 300
             // v giảm dần, nếu v = 0 => bóng dừng lại và rơi xuống
             if self.v <= 0 {
                 v = 0
