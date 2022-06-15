@@ -1,0 +1,6 @@
+framework module Pods_b24DemoItuneMusic {
+  umbrella header "Pods-b24DemoItuneMusic-umbrella.h"
+
+  export *
+  module * { export * }
+}

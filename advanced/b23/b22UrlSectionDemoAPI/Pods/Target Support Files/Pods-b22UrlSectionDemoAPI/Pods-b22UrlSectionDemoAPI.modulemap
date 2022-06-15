@@ -1,0 +1,6 @@
+framework module Pods_b22UrlSectionDemoAPI {
+  umbrella header "Pods-b22UrlSectionDemoAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
