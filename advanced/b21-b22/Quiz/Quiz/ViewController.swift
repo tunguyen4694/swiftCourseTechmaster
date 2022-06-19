@@ -9,11 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var startButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        startButton.clipsToBounds = true
+        startButton.layer.cornerRadius = 20
     }
 
-
+    @IBAction func onStart(_ sender: Any) {
+        let vc = QuizViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
